@@ -1,0 +1,51 @@
+from math import sqrt
+
+class Triangle:
+    def __init__(self, edge1, edge2, edge3):
+        self.edge1 = edge1
+        self.edge2 = edge2
+        self.edge3 = edge3
+
+    def perimeter(self):
+        self.perimeter_triangle = self.edge1 + self.edge2 + self.edge3
+        return self.perimeter_triangle
+
+    def area(self):
+        s = self.perimeter()/2
+        self.area_triangle = sqrt(s*(s-self.edge1)*(s-self.edge2)*(s-self.edge3))
+        return self.area_triangle
+
+class Rectangle:
+    def __init__(self, edge1, edge2):
+        self.edge1 = edge1
+        self.edge2 = edge2
+
+    def perimeter(self):
+        self.perimeter_rectangle = 2*(self.edge1 + self.edge2)
+        return self.perimeter_rectangle
+
+    def area(self):
+        self.area_rectangle = self.edge1 * self.edge2
+        return self.area_rectangle
+
+class Square(Rectangle):
+    def __init__(self,edge):
+        super().__init__(edge,edge)
+
+
+class Cube(Square):
+    def __init__(self,height):
+        super().__init__(height)
+        self.height = height
+
+    def volume(self):
+
+        #self.volume_cube = Square.area(self)*self.height
+        self.volume_cube=self.area()*self.height
+        return self.volume_cube
+
+    def surface_cube(self):
+        #self.surface_cube_var=6*Square.area(self)
+        self.surface_cube_var = self.area() * 6
+        return self.surface_cube_var
+
